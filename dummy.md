@@ -3,6 +3,8 @@
 ==========================
 ketik 0 untuk input pesanan
 ketik 1 untuk masuk ke Queue management 
+ketik 2 untuk masuk ke Queue management admin
+ketik 3 untuk masuk ke rekap transaksi 
 ==========================
 
 - staff membuka list menu
@@ -112,6 +114,8 @@ Ketik 0 untuk ke halaman utama
 ==========================
 ketik 0 untuk input pesanan
 ketik 1 untuk masuk ke Queue management 
+ketik 2 untuk masuk ke Queue management admin
+ketik 3 untuk masuk ke rekap transaksi 
 ==========================
 
 - masuk ke list queue management
