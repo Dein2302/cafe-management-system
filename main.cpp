@@ -27,6 +27,27 @@ const string METODE_PEMBAYARAN[2][3] = {
 
 const string LINESPACING = "==========================";
 
+bool validasiPassword() {
+    bool isValid = false;
+
+    string inputPasword;
+    cout << "input password (ketik 0 untuk ke menu utama) : ";
+    cin >> inputPasword;
+
+    if (inputPasword == "0") {
+        displayHalamanAwal();
+    }
+
+    isValid = inputPasword == PASSWORD;
+
+    if (!isValid) {
+        cout << "PASSWORD SALAH" << "\n";
+        validasiPassword();
+    }
+
+    return isValid;
+}
+
 void menampilkanMenuUtama() {
     int totalMenu = sizeof(MENU_CAFE) / sizeof(MENU_CAFE[0]);
     cout << LINESPACING << "\n";
@@ -38,15 +59,30 @@ void menampilkanMenuUtama() {
 
 void displayHalamanAwal() {
     int daftarPerintah = sizeof(HALAMAN_UTAMA) / sizeof(HALAMAN_UTAMA[0]);
+
     cout << LINESPACING << "\n";
     for (int i = 0; i < daftarPerintah; i++) {
         cout << HALAMAN_UTAMA[i][0] << " " << HALAMAN_UTAMA[i][1] << "\n";
     }
     cout << LINESPACING << "\n";
+
+    string nomorHalaman;
+    cin >> nomorHalaman;
+    for (int i = 0; i < daftarPerintah; i++) {
+        if (HALAMAN_UTAMA[i][0] == nomorHalaman) {
+            if (HALAMAN_UTAMA[i][0] == "1") {
+                validasiPassword();
+            }
+        }
+    }
+
+    cout << "HALAMAN YANG DIPILIH SALAH" << "\n";
+
+    displayHalamanAwal(); 
 }
 
 int main() {
-    menampilkanMenuUtama();
     displayHalamanAwal();
+
     return 1;
 }
