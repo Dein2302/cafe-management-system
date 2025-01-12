@@ -28,24 +28,22 @@ const string METODE_PEMBAYARAN[2][3] = {
 const string LINESPACING = "==========================";
 
 bool validasiPassword() {
-    bool isValid = false;
 
     string inputPasword;
     cout << "input password (ketik 0 untuk ke menu utama) : ";
     cin >> inputPasword;
 
     if (inputPasword == "0") {
-        return isValid;
+        return false;
     }
 
-    isValid = inputPasword == PASSWORD;
 
-    if (!isValid) {
+    if (inputPasword != PASSWORD) {
         cout << "PASSWORD SALAH" << "\n";
         validasiPassword();
     }
 
-    return isValid;
+    return true;
 }
 
 void menampilkanMenuUtama() {
@@ -75,6 +73,10 @@ void displayHalamanAwal() {
                     return displayHalamanAwal();
                 }
             }
+            if (nomorHalaman == "0") {
+                return menampilkanMenuUtama();
+            }
+
         }
     }
 
