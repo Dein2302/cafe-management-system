@@ -14,8 +14,8 @@ const string MENU_CAFE[4][3] = {
 const string HALAMAN_UTAMA[4][3] = {
     {"0", "Input pesanan", "0"},
     {"1", "Masuk ke queue management", "0"},
-    {"2", "Masuk ke queue management admin", "1"},
-    {"3", "Masuk ke rekap transaksi", "1"}
+    {"2", "Masuk ke queue management (admin)", "1"},
+    {"3", "Masuk ke rekap transaksi (admin)", "1"}
 };
 
 const string PASSWORD = "nadya";
@@ -35,7 +35,7 @@ bool validasiPassword() {
     cin >> inputPasword;
 
     if (inputPasword == "0") {
-        displayHalamanAwal();
+        return isValid;
     }
 
     isValid = inputPasword == PASSWORD;
@@ -70,15 +70,17 @@ void displayHalamanAwal() {
     cin >> nomorHalaman;
     for (int i = 0; i < daftarPerintah; i++) {
         if (HALAMAN_UTAMA[i][0] == nomorHalaman) {
-            if (HALAMAN_UTAMA[i][0] == "1") {
-                validasiPassword();
+            if (HALAMAN_UTAMA[i][2] == "1") {
+                if (!validasiPassword()) {
+                    return displayHalamanAwal();
+                }
             }
         }
     }
 
     cout << "HALAMAN YANG DIPILIH SALAH" << "\n";
 
-    displayHalamanAwal(); 
+    displayHalamanAwal();
 }
 
 int main() {
